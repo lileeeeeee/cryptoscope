@@ -1,0 +1,76 @@
+.button {
+
+    height: 220px;
+  position: relative;
+  border: 1px solid;
+
+  margin: 0;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+
+  
+
+}
+
+
+#luckybtnbg1 {
+    z-index: 5;
+    width: 375px;
+    height: 375px;
+    
+}
+
+#luckybtnbg2 {
+    z-index: 4;
+    width: 525px;
+    height: 525px;
+}
+
+#luckybtnbg3 {
+    z-index: 3;
+    width: 675px;
+    height: 675px;
+}
+
+#luckybtnbg4 {
+    z-index: 2;
+    width: 825px;
+    height: 825px;
+}
+
+#luckybtnbg5 {
+    z-index: 1;
+    width: 975px;
+    height: 975px;
+}
+
+#luckybtnbg6 {
+    z-index: 0;
+    width: 1125px;
+    height: 1125px;
+    color: white;
+}
+
+#luckybtn {
+    z-index: 6;
+    
+
+}
+
+#headersign {
+    margin: 0;
+    position: absolute;
+    top: 28px;
+    left: 50%;
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    z-index: 7;
+    text-align: center;
+    font-size: large;
+    display: none;
+    
+    }
+
