@@ -1,7 +1,8 @@
-var queryHoroscope ='https://aztro.sameerkumar.website/?sign=aquarius&day=today'; 
+var sign = localStorage.getItem("sign");
+var queryHoroscope ='https://aztro.sameerkumar.website/?sign=' + sign + '&day=today'; 
 var cryptoNameEl = document.querySelector("#cryptoName"); 
 var priceEl = document.querySelector("#price"); 
-var rankEl = document.querySelector("#rank");
+var rankEl = document.querySelector("#marketRank");
 var iconEl = document.querySelector("#icon"); 
 fetch(queryHoroscope, {
     method: 'POST'
@@ -26,5 +27,7 @@ fetch(queryCrypto) .then(response => response.json())
     let price = coins[arrayPosition].item.price_btc;
     let rank = coins[arrayPosition].item.market_cap_rank; 
     let cryptoIcon = coins[arrayPosition].item.small
-
+    cryptoNameEl.innerHTML = "The stars have chosen " + luckyCrypto + " as your lucky crypto!"
+    priceEl.innerHTML = price + " BTC" 
+    rankEl.innerHTML = "#" + rank + " on the market rank"
 }); 
