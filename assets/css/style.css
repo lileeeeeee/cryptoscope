@@ -1,3 +1,4 @@
+
 .button {
 
     height: 220px;
@@ -15,6 +16,30 @@
 
 }
 
+
+.zodiacflex{
+    display: flex;
+    flex-direction: column;
+    color: brown;
+    align-items: center;
+   
+  
+  
+
+}
+.zodiacbtns {
+flex: 1 0 70px;
+color: brown;
+width: 100px;
+justify-content: space-evenly;
+
+}
+
+#virgobtn {
+    
+    
+   
+}
 
 #luckybtnbg1 {
     z-index: 5;
