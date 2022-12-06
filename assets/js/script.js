@@ -1,4 +1,8 @@
-var queryHoroscope ='https://aztro.sameerkumar.website/?sign=aquarius&day=today';
+var queryHoroscope ='https://aztro.sameerkumar.website/?sign=aquarius&day=today'; 
+var cryptoNameEl = document.querySelector("#cryptoName"); 
+var priceEl = document.querySelector("#price"); 
+var rankEl = document.querySelector("#rank");
+var iconEl = document.querySelector("#icon"); 
 fetch(queryHoroscope, {
     method: 'POST'
 })
@@ -17,7 +21,11 @@ fetch(queryCrypto) .then(response => response.json())
 .then(json => { 
     let coins = json.coins; 
     console.log(coins);
-    console.log(coins[arrayPosition].item.id);
+    console.log(coins[arrayPosition].item.name); 
+    let luckyCrypto = coins[arrayPosition].item.name;
+    let price = coins[arrayPosition].item.price_btc;
+    let rank = coins[arrayPosition].item.market_cap_rank; 
+    let cryptoIcon = coins[arrayPosition].item.small
 
 }); 
 
