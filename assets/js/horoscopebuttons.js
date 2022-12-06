@@ -33,6 +33,8 @@ function mainInformation(event) {
 
     console.log("This was clicked: ", zodiac);
 
+    window.location = "APIdisplay.html";
+
     // redirect to next page WITH the zodiac as a query parameter
 
 }
