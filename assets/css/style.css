@@ -1,3 +1,16 @@
+button[data-tooltip] {
+    cursor: grab;
+}
+
+button[data-tooltip]:hover::after {
+    content: attr(data-tooltip);
+    position: absolute;
+    background-color: black;
+    color: white;
+    top: 0px;
+    right: 0px;
+    font-size: 30px;
+}
 .button {
 
     height: 220px;
@@ -16,6 +29,87 @@
 }
 
 
+.zodiacflex{
+    display: flex;
+    flex-direction: column;
+   
+    align-items: center;
+   
+  
+  
+
+}
+.zodiacbtns {
+flex: 1 0 70px;
+font-size: larger;
+width: 100px;
+justify-content: space-between;
+
+}
+
+#virgobtn {
+    color: darkblue;
+    
+    
+   
+}
+#scorpiobtn {
+    color: darkred;
+    
+    
+   
+}
+#piscesbtn {
+    color: blue;
+    
+   
+}
+#capricornbtn {
+    color: darkkhaki;
+    
+    
+   
+}
+#aquariusbtn {
+    margin-top: 10px;
+    color: blueviolet;
+    
+    
+   
+}
+#ariesbtn {
+    color: red;
+    
+    
+   
+}
+#taurusbtn {
+    color: brown;
+    
+    
+   
+}
+#cancerbtn {
+    color: burlywood;
+    
+   
+}
+#leobtn {
+    color: darkorchid;
+
+}
+#sagittariusbtn {
+    color: darkolivegreen;
+    
+    
+   
+}
+#librabtn {
+    color: darkgoldenrod;
+}
+#geminibtn {
+    color: cadetblue;
+}
 #luckybtnbg1 {
     z-index: 5;
     width: 375px;
