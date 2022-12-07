@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -8,26 +9,32 @@
     <link rel="stylesheet" href="assets/css/style.css">
     <title>Welcome!</title>
 </head>
+
 <body>
- <header style="padding: 20px; text-align:center;">YOUR CRYPTOSCOPE</header>
-  <div class ="columns">
-   <section class="column card" id="horoscope">
-        Horoscope displays here, can append the html element and text from javascript
-   </section>
-   <section class = "column card" id="cryptodata"> 
-        <h2 id = "cryptoName"></h2> 
-        <h3 id = "price"></h3>
-        <h3 id = "marketRank"></h3> 
-        <img id = "icon"> 
-    </section>
+    <header style="padding: 20px; text-align:center;">YOUR CRYPTOSCOPE</header>
+    <div class="columns">
+        <section class="column card" id="horoscope">
+            <h3 id="headline"></h3>
+            <h3 id="date"></h3>
+            <h3 id="luckynumba"></h3>
+        </section>
+
+
+        <section class="column card" id="cryptodata">
+            <h2 id="cryptoName"></h2>
+            <h3 id="price"></h3>
+            <h3 id="marketRank"></h3>
+            <img id="icon">
+        </section>
     </div>
-    <div class = "columns">
-        <section class = "column card" id="content1">content1</section>
-        <section class = "column card" id="content2">content2</section>
-        <section class = "column card" id="content3">content3</section>
-        <section class = "column card" id="content4">content4</section>
+    <div class="columns">
+        <section class="column card" id="content1">content1</section>
+        <section class="column card" id="content2">content2</section>
+        <section class="column card" id="content3">content3</section>
+        <section class="column card" id="content4">content4</section>
     </div>
-  </div>
-    <script src="./assets/js/APIdisplay.js"></script>   
+    </div>
+    <script src="./assets/js/APIdisplay.js"></script>
 </body>
+
 </html>

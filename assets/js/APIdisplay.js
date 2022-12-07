@@ -14,6 +14,17 @@ fetch(queryHoroscope, {
     let cryptoChoice = luckyNumber % 8; 
     console.log(cryptoChoice);
     localStorage.setItem("lucky", cryptoChoice); 
+    console.log(queryHoroscope);
+    
+    var horoscopeDescription = document.querySelector('#content1');
+    var headline = document.querySelector('#headline');
+    var horDate = document.querySelector('#date');
+    var luckynumba = document.querySelector('#luckynumba');
+    luckynumba.textContent = "Your Lucky Number is: " + luckyNumber;
+    horDate.textContent = json.date_range;
+    headline.textContent = "Welcome " + sign + "!";
+    horoscopeDescription.textContent = json.description;
+    console.log(sign);
 });
 
 var arrayPosition = localStorage.getItem("lucky");
