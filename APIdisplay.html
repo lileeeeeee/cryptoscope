@@ -9,24 +9,25 @@
     <title>Welcome!</title>
 </head>
 <body>
-    <section class="page3topsection" id="page3top">
-        <h1> WELCOME </h1>
-    </section>
-
-    <section class="page3horoscopesection" id="page3horoscope">
-        <h2> Horoscope info <span id="horoscope-result-text"></span></h2>
-        <div id="horoscope-result-content"></div>
-    </section>
-
-    <section id = "cryptoSection" style="display: block;"> 
+ <header style="padding: 20px; text-align:center;">YOUR CRYPTOSCOPE</header>
+  <div class ="columns">
+   <section class="column card" id="horoscope">
+        Horoscope displays here, can append the html element and text from javascript
+   </section>
+   <section class = "column card" id="cryptodata"> 
         <h2 id = "cryptoName"></h2> 
         <h3 id = "price"></h3>
         <h3 id = "marketRank"></h3> 
         <img id = "icon"> 
-
     </section>
-    
+    </div>
+    <div class = "columns">
+        <section class = "column card" id="content1">content1</section>
+        <section class = "column card" id="content2">content2</section>
+        <section class = "column card" id="content3">content3</section>
+        <section class = "column card" id="content4">content4</section>
+    </div>
+  </div>
     <script src="./assets/js/APIdisplay.js"></script>   
-
 </body>
 </html>
