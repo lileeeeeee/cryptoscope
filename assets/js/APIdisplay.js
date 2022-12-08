@@ -4,6 +4,8 @@ var cryptoNameEl = document.querySelector("#cryptoName");
 var priceEl = document.querySelector("#price"); 
 var rankEl = document.querySelector("#marketRank");
 var iconEl = document.querySelector("#icon"); 
+var iconHoroEl = document.querySelector("#iconHoro"); 
+iconHoroEl.setAttribute("src", "assets/images/" + sign + ".png"); 
 fetch(queryHoroscope, {
     method: 'POST'
 })
