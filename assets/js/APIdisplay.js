@@ -50,7 +50,6 @@ fetch(queryHoroscopeYesterday, {method: 'POST'}).then(function (response) {
     return response.json();
 }).then(function (json) { // displays that data on the page
     var horoscopeDescriptionY = document.querySelector('#horo-DescriptionY');
-    var headlineY = document.querySelector('#headlineY');
     var moodY = document.querySelector('#moodY');
     moodY.textContent = "Mood: " + json.mood;
     horoscopeDescriptionY.textContent = json.description;
@@ -87,6 +86,7 @@ fetch(queryCrypto).then(function (response) {
     // displays the data for "lucky" crypto based on lucky number
     cryptoNameEl.innerHTML = "the stars have chosen " + luckyCrypto + " as your lucky crypto"
     priceEl.innerHTML = price + " BTC"
+    localStorage.setItem("todayPrice",price);
     rankEl.innerHTML = "#" + rank + " on the market rank"
     iconEl.setAttribute("src", cryptoIcon);
     // does the same thing using yesterday's lucky number
@@ -110,4 +110,73 @@ fetch(queryCrypto).then(function (response) {
     priceElT.innerHTML = price2 + " BTC"
     rankElT.innerHTML = "#" + rank2 + " on the market rank"
     iconElT.setAttribute("src", cryptoIcon2);
+    localStorage.setItem("compare", luckyCrypto)
 });
+
+//gets historical data on your lucky crypto
+console.log(localStorage.getItem("compare"));
+var yesterday = dayjs().subtract(1,"day").format('DD-MM-YYYY');
+console.log(yesterday);
+var yesterdayCryptoURL = "https://api.coingecko.com/api/v3/coins/" + localStorage.getItem("compare").toLowerCase() +"/history?date="+yesterday+"&localization=false";
+fetch(yesterdayCryptoURL).then(function(response){
+    return response.json();
+}).then(function (json) {
+    console.log(json);
+ console.log(json.market_data.current_price.btc);
+ var yesterdayCryptoPrice = json.market_data.current_price.btc;
+ var modalContent = document.querySelector("#modal-text");
+ console.log(modalContent);
+ modalContent.textContent = " But really, how lucky are you? Yesterday's price was " + yesterdayCryptoPrice + " and today's is " + localStorage.getItem("todayPrice");
+
+
+   var number = localStorage.getItem("todayPrice")-yesterdayCryptoPrice;
+    console.log(number);
+
+
+
+});
+//this code is copied directly from Bulma for use with their modals
+document.addEventListener('DOMContentLoaded', () => {
+    // Functions to open and close a modal
+    function openModal($el) {
+      $el.classList.add('is-active');
+    }
+  
+    function closeModal($el) {
+      $el.classList.remove('is-active');
+    }
+  
+    function closeAllModals() {
+      (document.querySelectorAll('.modal') || []).forEach(($modal) => {
+        closeModal($modal);
+      });
+    }
+  
+    // Add a click event on buttons to open a specific modal
+    (document.querySelectorAll('.js-modal-trigger') || []).forEach(($trigger) => {
+      const modal = $trigger.dataset.target;
+      const $target = document.getElementById(modal);
+  
+      $trigger.addEventListener('click', () => {
+        openModal($target);
+      });
+    });
+  
+    // Add a click event on various child elements to close the parent modal
+    (document.querySelectorAll('.modal-background, .modal-close, .modal-card-head .delete, .modal-card-foot .button') || []).forEach(($close) => {
+      const $target = $close.closest('.modal');
+  
+      $close.addEventListener('click', () => {
+        closeModal($target);
+      });
+    });
+  
+    // Add a keyboard event to close all modals
+    document.addEventListener('keydown', (event) => {
+      const e = event || window.event;
+  
+      if (e.keyProperty === 27) { // Escape key
+        closeAllModals();
+      }
+    });
+  });
