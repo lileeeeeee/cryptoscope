@@ -40,5 +40,6 @@ fetch(queryCrypto) .then(response => response.json())
     let cryptoIcon = coins[arrayPosition].item.small
     cryptoNameEl.innerHTML = "The stars have chosen " + luckyCrypto + " as your lucky crypto!"
     priceEl.innerHTML = price + " BTC" 
-    rankEl.innerHTML = "#" + rank + " on the market rank"
+    rankEl.innerHTML = "#" + rank + " on the market rank" 
+    iconEl.setAttribute("src", cryptoIcon);
 }); 
