@@ -30,11 +30,7 @@ function mainInformation(event) {
     var button = event.target;
     var zodiac = button.getAttribute("data-zodiac")
     localStorage.setItem("sign", zodiac);
-
     console.log("This was clicked: ", zodiac);
-
     window.location = "APIdisplay.html";
-
-    // redirect to next page WITH the zodiac as a query parameter
 
 }
