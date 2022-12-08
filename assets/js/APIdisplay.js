@@ -6,6 +6,14 @@ var cryptoNameEl = document.querySelector("#cryptoName");
 var priceEl = document.querySelector("#price"); 
 var rankEl = document.querySelector("#marketRank");
 var iconEl = document.querySelector("#icon"); 
+var cryptoNameElY = document.querySelector("#cryptoNameY"); 
+var priceElY = document.querySelector("#priceY"); 
+var rankElY = document.querySelector("#marketRankY");
+var iconElY = document.querySelector("#iconY");
+var cryptoNameElT = document.querySelector("#cryptoNameT"); 
+var priceElT = document.querySelector("#priceT"); 
+var rankElT = document.querySelector("#marketRankT");
+var iconElT = document.querySelector("#iconT");
 var iconHoroEl = document.querySelector("#iconHoro"); 
 iconHoroEl.setAttribute("src", "assets/images/" + sign + ".png"); 
 fetch(queryHoroscope, {
@@ -17,7 +25,7 @@ fetch(queryHoroscope, {
     console.log(luckyNumber);
     let cryptoChoice = luckyNumber % 8; 
     console.log(cryptoChoice);
-    localStorage.setItem("lucky", cryptoChoice); 
+    localStorage.setItem("luckyToday", cryptoChoice); 
     console.log(queryHoroscope);
     
     var horoscopeDescription = document.querySelector('#horo-Description');
@@ -40,7 +48,7 @@ fetch(queryHoroscopeYesterday, {
     console.log(luckyNumber);
     let cryptoChoice = luckyNumber % 8; 
     console.log(cryptoChoice);
-    localStorage.setItem("lucky", cryptoChoice); 
+    localStorage.setItem("luckyYes", cryptoChoice); 
     console.log(queryHoroscopeYesterday);
     
     var horoscopeDescriptionY = document.querySelector('#horo-DescriptionY');
@@ -63,7 +71,7 @@ fetch(queryHoroscopeTomorrow, {
     console.log(luckyNumber);
     let cryptoChoice = luckyNumber % 8; 
     console.log(cryptoChoice);
-    localStorage.setItem("lucky", cryptoChoice); 
+    localStorage.setItem("luckyTom", cryptoChoice); 
     console.log(queryHoroscopeTomorrow);
     
     var horoscopeDescriptionT = document.querySelector('#horo-DescriptionT');
@@ -78,19 +86,50 @@ fetch(queryHoroscopeTomorrow, {
 });
 
 
-var arrayPosition = localStorage.getItem("lucky");
+var arrayPosToday = localStorage.getItem("luckyToday");
 var queryCrypto = "https://api.coingecko.com/api/v3/search/trending";
 fetch(queryCrypto) .then(response => response.json())
 .then(json => { 
     let coins = json.coins; 
     console.log(coins);
-    console.log(coins[arrayPosition].item.name); 
-    let luckyCrypto = coins[arrayPosition].item.name;
-    let price = coins[arrayPosition].item.price_btc;
-    let rank = coins[arrayPosition].item.market_cap_rank; 
-    let cryptoIcon = coins[arrayPosition].item.small
+    console.log(coins[arrayPosToday].item.name); 
+    let luckyCrypto = coins[arrayPosToday].item.name;
+    let price = coins[arrayPosToday].item.price_btc;
+    let rank = coins[arrayPosToday].item.market_cap_rank; 
+    let cryptoIcon = coins[arrayPosToday].item.small
     cryptoNameEl.innerHTML = "The stars have chosen " + luckyCrypto + " as your lucky crypto!"
     priceEl.innerHTML = price + " BTC" 
     rankEl.innerHTML = "#" + rank + " on the market rank" 
     iconEl.setAttribute("src", cryptoIcon);
+});  
+var arrayPosYes = localStorage.getItem("luckyYes");
+fetch(queryCrypto) .then(response => response.json())
+.then(json => { 
+    let coins = json.coins; 
+    console.log(coins);
+    console.log(coins[arrayPosYes].item.name); 
+    let luckyCrypto = coins[arrayPosYes].item.name;
+    let price = coins[arrayPosYes].item.price_btc;
+    let rank = coins[arrayPosYes].item.market_cap_rank; 
+    let cryptoIcon = coins[arrayPosYes].item.small
+    cryptoNameElY.innerHTML = "The stars chose " + luckyCrypto + " for yesterday's lucky crypto!"
+    priceElY.innerHTML = price + " BTC" 
+    rankElY.innerHTML = "#" + rank + " on the market rank" 
+    iconElY.setAttribute("src", cryptoIcon);
+});  
+
+var arrayPosTom = localStorage.getItem("luckyTom");
+fetch(queryCrypto) .then(response => response.json())
+.then(json => { 
+    let coins = json.coins; 
+    console.log(coins);
+    console.log(coins[arrayPosTom].item.name); 
+    let luckyCrypto = coins[arrayPosTom].item.name;
+    let price = coins[arrayPosTom].item.price_btc;
+    let rank = coins[arrayPosTom].item.market_cap_rank; 
+    let cryptoIcon = coins[arrayPosTom].item.small
+    cryptoNameElT.innerHTML = "The stars have chosen " + luckyCrypto + " as tomorrow's lucky crypto!"
+    priceElT.innerHTML = price + " BTC" 
+    rankElT.innerHTML = "#" + rank + " on the market rank" 
+    iconElT.setAttribute("src", cryptoIcon);
 }); 
