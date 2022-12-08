@@ -9,7 +9,7 @@ button[data-tooltip]:hover::after {
     color: white;
     top: 0px;
     right: 0px;
-    font-size: 30px;
+    font-size: 22px;
 }
 .button {
 
@@ -32,8 +32,10 @@ button[data-tooltip]:hover::after {
 .zodiacflex{
     display: flex;
     flex-direction: column;
-   
+    align-content: space-between;
     align-items: center;
+    align-content: space-around;
+    justify-content: space-around;
    
   
   
@@ -43,7 +45,8 @@ button[data-tooltip]:hover::after {
 flex: 1 0 70px;
 font-size: larger;
 width: 100px;
-justify-content: space-between;
+margin: 3px;
+
 
 }
 
