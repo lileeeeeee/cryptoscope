@@ -6,57 +6,86 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
-    <link rel="stylesheet" href="assets/css/style.css">
+    <link rel="stylesheet" href="assets/css/APIdisplay.css">
     <title>Welcome!</title>
 </head>
 
 <body>
-    <header style="padding: 20px; text-align:center;">YOUR CRYPTOSCOPE</header>
+    <header>YOUR CRYPTOSCOPE</header>
     <div class="columns">
         <section class="column card" id="horoscope">
-            <h3 id="headline"></h3>
-            <h3>Today is a your Lucky day! Using the Wisdom of the Stars we can determine the best Crypto Investment for you! </h3>
-            <h3 id="horo-Description"></h3>
-            <h3 id="mood"></h3>
+            <h1 class="card-header-title is-centered"id="headline"></h1>
+            <ul class = "card-content">
+            
+            <li id="horo-Description"></li>
+            <br><br>
+            <li id="mood"></li>
+            <br><br>
             <img id="iconHoro">
+            </ul>
         </section>
 
         <section class="column card" id="cryptodata">
-            <h2 id="cryptoName"></h2>
-            <h3 id="price"></h3>
-            <h3 id="marketRank"></h3>
+            <h1 class="card-header-title is-centered"id="cryptoName"></h1>
+            <ul class = "card-content">
+            <li>what luck! the best crypto for you, determined by the wisdom of the stars </li>
+            <br><br>
             <img id="icon">
+            <br><br>
+            <li id="price"></li>
+            <br><br>
+            <li id="marketRank"></li>
+        </ul>
         </section>
     </div>
 
     <div class="columns">
         <section class="column card" id="content1">
-            <h3>Yesterday's Horoscope Readings:</h3>
-            <h3 id="headlineY"></h3>
-            <h3 id="horo-DescriptionY"></h3>
-            <h3 id="moodY"></h3>
+            <h1 class ="card-header-title is-centered">yesterday</h1>
+            <ul class = "card-content">
+              <li id="headlineY"></li>
+              <li id="horo-DescriptionY"></li>
+              <br></br>
+              <li id="moodY"></li>
+              </ul>
         </section>
 
         <section class="column card" id="content2">
-            <h3>Tomorrow's Horoscope Readings:</h3>
-            <h3 id="headlineT"></h3>
-            <h3 id="horo-DescriptionT"></h3>
-            <h3 id="moodT"></h3>
+            <h1 class ="card-header-title is-centered">tomorrow</h1>
+            <ul class = "card-content">
+            <li id="headlineT"></li>
+            <li id="horo-DescriptionT"></li>
+            <br></br>
+            <li id="moodT"></li>
+        </ul>
         </section>
 
         <section class="column card" id="content3">
-            <h2 id="cryptoNameY"></h2>
-            <h3 id="priceY"></h3>
-            <h3 id="marketRankY"></h3>
+            <h1 class ="card-header-title is-centered">yesterday</h1>
+            <ul class = "card-content">
+            <li id="cryptoNameY"></li>
+            <br><br>
+            <li id="priceY"></li>
+            <br><br>
+            <li id="marketRankY"></li>
+            <br><br>
             <img id="iconY">
+        </ul>
         </section>
 
         <section class="column card" id="content4">
-            <h2 id="cryptoNameT"></h2>
-            <h3 id="priceT"></h3>
-            <h3 id="marketRankT"></h3>
+            <h1 class ="card-header-title is-centered">tomorrow</h1>
+            <ul class = "card-content">
+            <li id="cryptoNameT"></li>
+            <br><br>
+            <li id="priceT"></li>
+            <br><br>
+            <li id="marketRankT"></li>
+            <br><br>
             <img id="iconT">
+        </ul>
         </section>
+      
     </div>
 
     <script src="./assets/js/APIdisplay.js"></script>
