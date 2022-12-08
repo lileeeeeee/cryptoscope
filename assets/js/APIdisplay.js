@@ -16,7 +16,7 @@ fetch(queryHoroscope, {
     localStorage.setItem("lucky", cryptoChoice); 
     console.log(queryHoroscope);
     
-    var horoscopeDescription = document.querySelector('#content1');
+    var horoscopeDescription = document.querySelector('#horo-Description');
     var headline = document.querySelector('#headline');
     var horDate = document.querySelector('#date');
     var luckynumba = document.querySelector('#luckynumba');
