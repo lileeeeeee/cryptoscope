@@ -8,7 +8,7 @@
 * Badges
 
 ## Description
-Our website allows users to use their horoscope to make decisions on the cryptocurrency to buy based on today's, tomorrow's or even yesterday's information.
+Our website allows users to make cryptocurrency picks informed by their daily horoscope. Investment decisions can be made based on today's, tomorrow's or even yesterday's information. Our users can interpret statements about their moods and feelings while perusing current and historical cryptocurrency pricing data. 
 
 
 ## Usage
@@ -23,11 +23,19 @@ Our website allows users to use their horoscope to make decisions on the cryptoc
 All work was done in collaboration by :
 * Lily Langerud, Shane Popowski, Miguel Montenegro, Daliso Wasa and William Burnton.
 
+Deployed site
+* https://lileeeeeee.github.io/cryptoscope/
+
 In class assistance provided by :
 * Charlie Werness
 
 API's used include:
-* Bulma
+* CoinGecko (https://www.coingecko.com/en/api)
+* Aztro (https://aztro.sameerkumar.website/)
+
+Other web resources :
+* Bulma (https://bulma.io/)
+* Day.js (https://day.js.org/)
 
 
 
@@ -35,7 +43,7 @@ API's used include:
 
 MIT License
 
-Copyright (c) [2022] [fullname]
+Copyright (c) [2022] [Charlie's Angels Cryptoscope]
 
 Permission is hereby granted, free of charge, to any person obtaining a copy
 of this software and associated documentation files (the "Software"), to deal
