@@ -20,15 +20,12 @@ var iconElT = document.querySelector("#iconT");
 var iconHoroEl = document.querySelector("#iconHoro");
 // gets the data from the crypto API
 var queryCrypto = "https://api.coingecko.com/api/v3/search/trending";
-// gets the stored lucky number data from the horoscope API and guarantees a number less than 7 using the remainder
-var arrayPosToday = (localStorage.getItem("luckyToday")) % 7;
-var arrayPosYes = (localStorage.getItem("luckyYes")) % 7;
-var arrayPosTom = (localStorage.getItem("luckyTom")) % 7;
+
 // sets the icon for the user's horoscope to the sign variable
 iconHoroEl.setAttribute("src", "assets/images/" + sign + ".png");
 
 // gets the horoscope data for today
-fetch(queryHoroscope, {method: 'POST'}).then(function (response) {
+var promise1 = fetch(queryHoroscope, {method: 'POST'}).then(function (response) {
     return response.json();
 }).then(function (json) { // gets the lucky number from the horoscope.then(function (json) {
     const luckyNumber = json.lucky_number;
@@ -41,12 +38,12 @@ fetch(queryHoroscope, {method: 'POST'}).then(function (response) {
     var headline = document.querySelector('#headline');
     var mood = document.querySelector('#mood');
     mood.textContent = "Mood: " + json.mood;
-    headline.textContent = "welcome " + sign + "!";
+    headline.textContent = "Welcome " + sign + "!";
     horoscopeDescription.textContent = json.description;
 });
 
 // gets yesterday's horoscope
-fetch(queryHoroscopeYesterday, {method: 'POST'}).then(function (response) {
+var promise2 = fetch(queryHoroscopeYesterday, {method: 'POST'}).then(function (response) {
     return response.json();
 }).then(function (json) { // displays that data on the page
     var horoscopeDescriptionY = document.querySelector('#horo-DescriptionY');
@@ -59,7 +56,7 @@ fetch(queryHoroscopeYesterday, {method: 'POST'}).then(function (response) {
 });
 
 // gets tomorrow's horoscope
-fetch(queryHoroscopeTomorrow, {method: 'POST'}).then(function (response) {
+var promise3 = fetch(queryHoroscopeTomorrow, {method: 'POST'}).then(function (response) {
     return response.json();
 }).then(function (json) { // displays that data on the page
     var horoscopeDescriptionT = document.querySelector('#horo-DescriptionT');
@@ -71,47 +68,57 @@ fetch(queryHoroscopeTomorrow, {method: 'POST'}).then(function (response) {
     console.log(luckyNumTom);
     localStorage.setItem("luckyTom", luckyNumTom);
 });
+// gets the stored lucky number data from the horoscope API and guarantees a number less than 7 using the remainder
 
 // gets the data on the top trending crypto
-fetch(queryCrypto).then(function (response) {
-    return response.json();
-}).then(function (json) {
-    let coins = json.coins;
-    console.log(coins);
-    console.log(arrayPosToday);
-    let luckyCrypto = coins[arrayPosToday].item.name;
-    let price = coins[arrayPosToday].item.price_btc;
-    let rank = coins[arrayPosToday].item.market_cap_rank;
-    let cryptoIcon = coins[arrayPosToday].item.small
-    // displays the data for "lucky" crypto based on lucky number
-    cryptoNameEl.innerHTML = "the stars have chosen " + luckyCrypto + " as your lucky crypto"
-    priceEl.innerHTML = price + " BTC"
-    localStorage.setItem("todayPrice",price);
-    rankEl.innerHTML = "#" + rank + " on the market rank"
-    iconEl.setAttribute("src", cryptoIcon);
-    // does the same thing using yesterday's lucky number
-    let coins1 = json.coins;
-    console.log(arrayPosYes);
-    let luckyCrypto1 = coins1[arrayPosYes].item.name;
-    let price1 = coins1[arrayPosYes].item.price_btc;
-    let rank1 = coins1[arrayPosYes].item.market_cap_rank;
-    let cryptoIcon1 = coins1[arrayPosYes].item.small
-    cryptoNameElY.innerHTML = "The stars chose " + luckyCrypto1 + ";" + " " + "did you follow their guidance?"
-    priceElY.innerHTML = price1 + " BTC"
-    rankElY.innerHTML = "#" + rank1 + " on the market rank"
-    iconElY.setAttribute("src", cryptoIcon1);
-    let coins2 = json.coins;
-    console.log(arrayPosTom);
-    let luckyCrypto2 = coins2[arrayPosTom].item.name;
-    let price2 = coins2[arrayPosTom].item.price_btc;
-    let rank2 = coins2[arrayPosTom].item.market_cap_rank;
-    let cryptoIcon2 = coins2[arrayPosTom].item.small
-    cryptoNameElT.innerHTML = "The stars have chosen " + luckyCrypto2 + ". " + "Will you follow your destiny?"
-    priceElT.innerHTML = price2 + " BTC"
-    rankElT.innerHTML = "#" + rank2 + " on the market rank"
-    iconElT.setAttribute("src", cryptoIcon2);
-    localStorage.setItem("compare", luckyCrypto)
-});
+function fetchCrypto () {
+    fetch(queryCrypto).then(function (response) {
+      return response.json();
+  }).then(function (json) {
+      let coins = json.coins;
+      console.log(coins);
+      console.log(arrayPosToday);
+      let luckyCrypto = coins[arrayPosToday].item.name;
+      let price = coins[arrayPosToday].item.price_btc;
+      let rank = coins[arrayPosToday].item.market_cap_rank;
+      let cryptoIcon = coins[arrayPosToday].item.small
+      // displays the data for "lucky" crypto based on lucky number
+      cryptoNameEl.innerHTML = "The stars have chosen " + luckyCrypto + " as your lucky crypto."
+      priceEl.innerHTML = price + " BTC"
+      localStorage.setItem("todayPrice",price);
+      rankEl.innerHTML = "#" + rank + " on the market rank"
+      iconEl.setAttribute("src", cryptoIcon);
+      // does the same thing using yesterday's lucky number
+      let coins1 = json.coins;
+      console.log(arrayPosYes);
+      let luckyCrypto1 = coins1[arrayPosYes].item.name;
+      let price1 = coins1[arrayPosYes].item.price_btc;
+      let rank1 = coins1[arrayPosYes].item.market_cap_rank;
+      let cryptoIcon1 = coins1[arrayPosYes].item.small
+      cryptoNameElY.innerHTML = "The stars chose " + luckyCrypto1 + ";" + " " + "did you follow their guidance?"
+      priceElY.innerHTML = price1 + " BTC"
+      rankElY.innerHTML = "#" + rank1 + " on the market rank"
+      iconElY.setAttribute("src", cryptoIcon1);
+      let coins2 = json.coins;
+      console.log(arrayPosTom);
+      let luckyCrypto2 = coins2[arrayPosTom].item.name;
+      let price2 = coins2[arrayPosTom].item.price_btc;
+      let rank2 = coins2[arrayPosTom].item.market_cap_rank;
+      let cryptoIcon2 = coins2[arrayPosTom].item.small
+      cryptoNameElT.innerHTML = "The stars have chosen " + luckyCrypto2 + ". " + "Will you follow your destiny?"
+      priceElT.innerHTML = price2 + " BTC"
+      rankElT.innerHTML = "#" + rank2 + " on the market rank"
+      iconElT.setAttribute("src", cryptoIcon2);
+      localStorage.setItem("compare", luckyCrypto)
+  });
+}
+var arrayPosToday = (localStorage.getItem("luckyToday")) % 7;
+var arrayPosYes = (localStorage.getItem("luckyYes")) % 7;
+var arrayPosTom = (localStorage.getItem("luckyTom")) % 7;
+Promise.all([promise1, promise2, promise3])
+.then(function(data) {
+  fetchCrypto();
+})
 
 //gets historical data on your lucky crypto
 console.log(localStorage.getItem("compare"));

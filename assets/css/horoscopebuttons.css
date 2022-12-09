@@ -5,7 +5,9 @@ button[data-tooltip] {
 body {
 
     background-color: #f14668;
-    height: 100vh;
+    background-size: cover;
+    height: 100%;
+    
 }
 
 button[data-tooltip]:hover::after {
@@ -39,8 +41,7 @@ button[data-tooltip]:hover::after {
     flex-direction: column;
     align-content: space-between;
     align-items: center;
-    align-content: space-around;
-    justify-content: space-around;
+    
    
   
   
