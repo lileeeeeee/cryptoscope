@@ -109,7 +109,11 @@ function fetchCrypto () {
       priceElT.innerHTML = price2 + " BTC"
       rankElT.innerHTML = "#" + rank2 + " on the market rank"
       iconElT.setAttribute("src", cryptoIcon2);
-      localStorage.setItem("compare", luckyCrypto)
+      //variables for the historical data fetch call 
+      var compareById = coins[arrayPosToday].item.id;
+      console.log(compareById);
+      localStorage.setItem("compare", compareById);
+      fetchYesterday();
   });
 }
 var arrayPosToday = (localStorage.getItem("luckyToday")) % 7;
@@ -121,6 +125,7 @@ Promise.all([promise1, promise2, promise3])
 })
 
 //gets historical data on your lucky crypto
+function fetchYesterday() {
 console.log(localStorage.getItem("compare"));
 var yesterday = dayjs().subtract(1,"day").format('DD-MM-YYYY');
 console.log(yesterday);
@@ -129,19 +134,35 @@ fetch(yesterdayCryptoURL).then(function(response){
     return response.json();
 }).then(function (json) {
     console.log(json);
- console.log(json.market_data.current_price.btc);
+ 
  var yesterdayCryptoPrice = json.market_data.current_price.btc;
  var modalContent = document.querySelector("#modal-text");
  console.log(modalContent);
- modalContent.textContent = " But really, how lucky are you? Yesterday's price was " + yesterdayCryptoPrice + " and today's is " + localStorage.getItem("todayPrice");
+  console.log(json.market_data.current_price.btc);
+  console.log(localStorage.getItem("todayPrice"));
+   var todayCryptoPrice = localStorage.getItem("todayPrice");
+   yesterdayCryptoPrice;
+    var percentChange = (((todayCryptoPrice-yesterdayCryptoPrice)/yesterdayCryptoPrice)*100);
+    
+
+ modalContent.textContent = " The planets are moving and this crypto price has changed " + Math.floor(percentChange) + "% from yesterday.";
 
 
-   var number = localStorage.getItem("todayPrice")-yesterdayCryptoPrice;
-    console.log(number);
+})
+};
+
+//this doesn't work because data.variable.usd doesn't work but the crypto name is a variable//
+//   var convertCurrency="https://api.coingecko.com/api/v3/simple/price?ids=" +localStorage.getItem("compare").toLowerCase() + "&vs_currencies=usd";
+//   fetch(convertCurrency).then(function(response){
+//     return response.json();
+// }).then(function (data) {
+//     console.log(data.hasOwnProperty('aptos'));
+//     console.log(data);
+    
+    
+//   });
 
 
-
-});
 //this code is copied directly from Bulma for use with their modals
 document.addEventListener('DOMContentLoaded', () => {
     // Functions to open and close a modal
