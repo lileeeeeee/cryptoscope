@@ -24,7 +24,7 @@ All work was done in collaboration by :
 * Lily Langerud, Shane Popowski, Miguel Montenegro, Daliso Wasa and William Burnton.
 
 Deployed site
-* https://lileeeeeee.github.io/cryptoscope/
+* https://llangerud.github.io/cryptoscope/
 
 In class assistance provided by :
 * Charlie Werness
